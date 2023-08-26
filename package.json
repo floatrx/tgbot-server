@@ -1,0 +1,35 @@
+{
+  "name": "tg-bot-server",
+  "version": "0.0.0",
+  "description": "Experiments with Telegram Bot API",
+  "type": "module",
+  "engines": {
+    "node": ">= 18.12 <19"
+  },
+  "devDependencies": {
+    "@types/node": "~18",
+    "@typescript-eslint/eslint-plugin": "~6.2",
+    "@typescript-eslint/parser": "~6.2",
+    "eslint": "~8.46",
+    "eslint-config-prettier": "~9.0",
+    "prettier": "~3.0",
+    "rimraf": "~5.0",
+    "ts-api-utils": "~1.0",
+    "ts-node": "^10.9.1",
+    "typescript": "~5.1"
+  },
+  "scripts": {
+    "dev": "nodemon --watch 'src/**' --ext '.ts,.tsx' --exec 'ts-node --esm src/main.ts'",
+    "start": "node build/src/main.js",
+    "clean": "rimraf build tmp",
+    "prebuild": "npm run lint",
+    "build": "tsc -p tsconfig.json",
+    "build.release": "npm run clean && tsc -p tsconfig.release.json",
+    "lint": "eslint . --ext .ts --ext .mts",
+    "prettier": "prettier --config .prettierrc --write ."
+  },
+  "author": "floatrx",
+  "dependencies": {
+    "tslib": "~2.6"
+  }
+}
